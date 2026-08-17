@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unique House | Premium Fashion</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0b0b;
+      color: #fff;
+      line-height: 1.5;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(11, 11, 11, 0.96);
+      border-bottom: 1px solid #292929;
+      padding: 16px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 46px;
+      height: 46px;
+      border: 1px solid #d4af37;
+      color: #d4af37;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Georgia, serif;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .brand-name {
+      font-family: Georgia, serif;
+      letter-spacing: 2px;
+      font-size: 20px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #d4af37;
+    }
+
+    .cart-button {
+      background: #d4af37;
+      color: #000;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 15px;
+    }
+
+    .hero {
+      min-height: 75vh;
+      display: flex;
+      align-items: center;
+      padding: 70px 7%;
+      background:
+        radial-gradient(circle at 80% 40%, #35300f 0%, transparent 35%),
+        linear-gradient(135deg, #111 0%, #050505 100%);
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .small-title {
+      color: #d4af37;
+      letter-spacing: 4px;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(45px, 8vw, 90px);
+      line-height: 0.95;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #d4af37;
+    }
+
+    .hero p {
+      color: #c8c8c8;
+      max-width: 520px;
+      margin-bottom: 30px;
+      font-size: 17px;
+    }
+
+    .primary-button {
+      display: inline-block;
+      background: #d4af37;
+      color: #000;
+      padding: 14px 25px;
+      text-decoration: none;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    section {
+      padding: 70px 6%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-family: Georgia, serif;
+      font-size: 38px;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: #999;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .category {
+      min-height: 180px;
+      border: 1px solid #292929;
+      display: flex;
+      align-items: flex-end;
+      padding: 25px;
+      background: linear-gradient(145deg, #1a1a1a, #080808);
+      transition: 0.3s;
+    }
+
+    .category:hover {
+      border-color: #d4af37;
+      transform: translateY(-4px);
+    }
+
+    .category h3 {
+      font-family: Georgia, serif;
+      font-size: 24px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .product {
+      background: #111;
+      border: 1px solid #252525;
+      overflow: hidden;
+    }
+
+    .product-image {
+      height: 280px;
+      background: linear-gradient(145deg, #242424, #0c0c0c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+      font-size: 14px;
+    }
+
+    .product-info {
+      padding: 18px;
+    }
+
+    .product-info h3 {
+      font-family: Georgia, serif;
+      margin-bottom: 7px;
+    }
+
+    .product-info p {
+      color: #999;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      color: #d4af37;
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .add-cart {
+      width: 100%;
+      background: transparent;
+      color: #fff;
+      border: 1px solid #d4af37;
+      padding: 11px;
+      cursor: pointer;
+    }
+
+    .add-cart:hover {
+      background: #d4af37;
+      color: #000;
+    }
+
+    .about {
+      background: #101010;
+      text-align: center;
+    }
+
+    .about-content {
+      max-width: 750px;
+      margin: auto;
+    }
+
+    .about p {
+      color: #aaa;
+      margin-top: 15px;
+    }
+
+    footer {
+      padding: 35px 6%;
+      text-align: center;
+      border-top: 1px solid #292929;
+      color: #777;
+    }
+
+    .cart-panel {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: min(420px, 100%);
+      height: 100vh;
+      background: #111;
+      z-index: 2000;
+      padding: 25px;
+      transition: 0.3s;
+      border-left: 1px solid #333;
+      overflow-y: auto;
+    }
+
+    .cart-panel.open {
+      right: 0;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .close-cart {
+      background: none;
+      color: #fff;
+      border: none;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    .cart-item {
+      border-bottom: 1px solid #292929;
+      padding: 15px 0;
+    }
+
+    .cart-item strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .cart-item span {
+      color: #d4af37;
+    }
+
+    .remove {
+      background: none;
+      border: none;
+      color: #888;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .cart-total {
+      margin-top: 25px;
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .checkout {
+      margin-top: 20px;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      background: #d4af37;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .empty {
+      color: #777;
+    }
+
+    @media (max-width: 900px) {
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .categories {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .categories {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 65vh;
+        padding: 50px 7%;
+      }
+
+      section {
+        padding: 50px 5%;
+      }
+
+      .brand-name {
+        font-size: 16px;
+      }
+
+      .hero h1 {
+        font-size: 52px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">UH</div>
+    <div class="brand-name">UNIQUE HOUSE</div>
+  </div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#about">About</a>
+  </nav>
+
+  <button class="cart-button" onclick="openCart()">
+    Cart (<span id="cartCount">0</span>)
+  </button>
+</header>
+
+<main>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="small-title">PREMIUM FASHION</div>
+
+      <h1>
+        WEAR<br>
+        <span>UNIQUE.</span>
+      </h1>
+
+      <p>
+        Discover premium fashion designed for people who want
+        their style to stand apart.
+      </p>
+
+      <a href="#shop" class="primary-button">SHOP COLLECTION</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>Shop By Category</h2>
+      <p>Discover your signature style.</p>
+    </div>
+
+    <div class="categories">
+      <div class="category">
+        <h3>T-Shirts</h3>
+      </div>
+
+      <div class="category">
+        <h3>Jeans</h3>
+      </div>
+
+      <div class="category">
+        <h3>Trousers</h3>
+      </div>
+
+      <div class="category">
+        <h3>New Arrivals</h3>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop">
+    <div class="section-title">
+      <h2>Featured Collection</h2>
+      <p>Premium pieces from Unique House.</p>
+    </div>
+
+    <div class="products">
+
+      <div class="product">
+        <div class="product-image">PRODUCT IMAGE</div>
+        <div class="product-info">
+          <h3>Signature Black T-Shirt</h3>
+          <p>Premium cotton • Regular fit</p>
+          <div class="price">₹799</div>
+          <button class="add-cart"
+            onclick="addToCart('Signature Black T-Shirt', 799)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-image">PRODUCT IMAGE</div>
+        <div class="product-info">
+          <h3>Classic Blue Jeans</h3>
+          <p>Premium denim • Slim fit</p>
+          <div class="price">₹1,499</div>
+          <button class="add-cart"
+            onclick="addToCart('Classic Blue Jeans', 1499)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-image">PRODUCT IMAGE</div>
+        <div class="product-info">
+          <h3>Luxury Black Trousers</h3>
+          <p>Premium fabric • Modern fit</p>
+          <div class="price">₹1,299</div>
+          <button class="add-cart"
+            onclick="addToCart('Luxury Black Trousers', 1299)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-image">PRODUCT IMAGE</div>
+        <div class="product-info">
+          <h3>UH Oversized Tee</h3>
+          <p>Heavy cotton • Oversized fit</p>
+          <div class="price">₹999</div>
+          <button class="add-cart"
+            onclick="addToCart('UH Oversized Tee', 999)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-content">
+      <div class="small-title">ABOUT US</div>
+      <h2>Style Without Limits.</h2>
+
+      <p>
+        Unique House is a modern fashion brand focused on premium
+        everyday clothing, clean design and confident style.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Unique House. All Rights Reserved.
+</footer>
+
+<div class="cart-panel" id="cartPanel">
+
+  <div class="cart-header">
+    <h2>Your Cart</h2>
+    <button class="close-cart" onclick="closeCart()">×</button>
+  </div>
+
+  <div id="cartItems">
+    <p class="empty">Your cart is empty.</p>
+  </div>
+
+  <div class="cart-total">
+    Total: ₹<span id="cartTotal">0</span>
+  </div>
+
+  <button class="checkout" onclick="checkout()">
+    PROCEED TO CHECKOUT
+  </button>
+
+</div>
+
+<script>
+  let cart = [];
+
+  function addToCart(name, price) {
+    cart.push({
+      name: name,
+      price: price
+    });
+
+    updateCart();
+
+    alert(name + " added to cart!");
+  }
+
+  function updateCart() {
+    const cartItems = document.getElementById("cartItems");
+    const cartCount = document.getElementById("cartCount");
+    const cartTotal = document.getElementById("cartTotal");
+
+    cartCount.textContent = cart.length;
+
+    if (cart.length === 0) {
+      cartItems.innerHTML =
+        '<p class="empty">Your cart is empty.</p>';
+
+      cartTotal.textContent = "0";
+      return;
+    }
+
+    let total = 0;
+
+    cartItems.innerHTML = cart.map((item, index) => {
+      total += item.price;
+
+      return `
+        <div class="cart-item">
+          <strong>${item.name}</strong>
+          <span>₹${item.price}</span><br>
+          <button class="remove"
+            onclick="removeItem(${index})">
+            Remove
+          </button>
+        </div>
+      `;
+    }).join("");
+
+    cartTotal.textContent = total;
+  }
+
+  function removeItem(index) {
+    cart.splice(index, 1);
+    updateCart();
+  }
+
+  function openCart() {
+    document.getElementById("cartPanel")
+      .classList.add("open");
+  }
+
+  function closeCart() {
+    document.getElementById("cartPanel")
+      .classList.remove("open");
+  }
+
+  function checkout() {
+    if (cart.length === 0) {
+      alert("Your cart is empty.");
+      return;
+    }
+
+    alert(
+      "Checkout is ready to connect to your payment gateway. " +
+      "We will add real online payments in the next step."
+    );
+  }
+
+  updateCart();
+</script>
+
+</body>
+</html>
